@@ -2,7 +2,7 @@
 data "aws_region" "current" {}
 
 # AWS Network Firewall Policy
-resource "aws_networkfirewall_firewall_policy" "main2" {
+resource "aws_networkfirewall_firewall_policy" "main" {
   name = "${var.project_name}-${var.environment}-firewall-policy"
 
   firewall_policy {
@@ -33,7 +33,7 @@ resource "aws_networkfirewall_firewall_policy" "main2" {
     }
 
     # Add TLS inspection configuration if certificate is provided
-    tls_inspection_configuration_arn = aws_networkfirewall_tls_inspection_configuration.main2.arn
+    tls_inspection_configuration_arn = aws_networkfirewall_tls_inspection_configuration.main.arn
   }
 
   tags = {
@@ -74,7 +74,7 @@ EOF
 # AWS Network Firewall
 resource "aws_networkfirewall_firewall" "main" {
   name                = "${var.project_name}-${var.environment}-network-firewall"
-  firewall_policy_arn = aws_networkfirewall_firewall_policy.main2.arn
+  firewall_policy_arn = aws_networkfirewall_firewall_policy.main.arn
   vpc_id              = var.vpc_id
 
   delete_protection = false
@@ -150,7 +150,7 @@ resource "aws_networkfirewall_logging_configuration" "main" {
     }
   }
 }
-resource "aws_networkfirewall_tls_inspection_configuration" "main2" {
+resource "aws_networkfirewall_tls_inspection_configuration" "main" {
   name        = "${var.project_name}-${var.environment}-tls-inspection"
   description = "${var.project_name}-${var.environment}-tls-inspection"
 

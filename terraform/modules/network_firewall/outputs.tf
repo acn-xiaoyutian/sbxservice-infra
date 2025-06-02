@@ -15,7 +15,7 @@ output "firewall_status" {
 
 output "firewall_policy_id" {
   description = "ID of the Network Firewall Policy"
-  value       = aws_networkfirewall_firewall_policy.main2.id
+  value       = aws_networkfirewall_firewall_policy.main.id
 }
 
 output "custom_http_rule_group_arn" {
