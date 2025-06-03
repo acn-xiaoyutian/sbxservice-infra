@@ -9,6 +9,7 @@ resource "aws_networkfirewall_firewall_policy" "main" {
     stateless_default_actions          = ["aws:forward_to_sfe"]
     stateless_fragment_default_actions = ["aws:forward_to_sfe"]
 
+    # only available from terraform provider 5.x
     policy_variables {
       rule_variables {
         key = "HOME_NET"
@@ -33,7 +34,7 @@ resource "aws_networkfirewall_firewall_policy" "main" {
     }
 
     # Add TLS inspection configuration if certificate is provided
-    tls_inspection_configuration_arn = aws_networkfirewall_tls_inspection_configuration.main.arn
+    tls_inspection_configuration_arn = aws_networkfirewall_tls_inspection_configuration.main_tls.arn
   }
 
   tags = {
@@ -150,7 +151,7 @@ resource "aws_networkfirewall_logging_configuration" "main" {
     }
   }
 }
-resource "aws_networkfirewall_tls_inspection_configuration" "main" {
+resource "aws_networkfirewall_tls_inspection_configuration" "main_tls" {
   name        = "${var.project_name}-${var.environment}-tls-inspection"
   description = "${var.project_name}-${var.environment}-tls-inspection"
 
