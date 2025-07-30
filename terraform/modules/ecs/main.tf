@@ -300,7 +300,19 @@ resource "aws_secretsmanager_secret" "kong_cluster_cert" {
 resource "aws_secretsmanager_secret_version" "kong_cluster_cert" {
   count         = var.kong_enabled ? 1 : 0
   secret_id     = aws_secretsmanager_secret.kong_cluster_cert[0].id
-  secret_string = "-----BEGIN CERTIFICATE-----MIICBjCCAaygAwIBAgIBATAKBggqhkjOPQQDBDA0MTIwCQYDVQQGEwJJTjAlBgNVBAMeHgBrAG8AbgBuAGUAYwB0AC0ATABhAG0AcABQAE8AQzAeFw0yNTA3MzAwNDUzMTNaFw0zNTA3MzAwNDUzMTNaMDQxMjAJBgNVBAYTAklOMCUGA1UEAx4eAGsAbwBuAG4AZQBjAHQALQBMAGEAbQBwAFAATwBDMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkmSUOQbcCnlD+b85MYYEkAdG3B6y/zt7fmhmbo376iULGoQRhemNFhc9PIVb8C5aHR7gTH90x0T2g2LmH+q6wqOBrjCBqzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIABjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwFwYJKwYBBAGCNxQCBAoMCGNlcnRUeXBlMCMGCSsGAQQBgjcVAgQWBBQBAQEBAQEBAQEBAQEBAQEBAQEBATAcBgkrBgEEAYI3FQcEDzANBgUpAQEBAQIBCgIBFDATBgkrBgEEAYI3FQEEBgIEABQACjAKBggqhkjOPQQDBANIADBFAiBcagvXb7a3wq5+72ybQF/WuTRsGUltcZPxeeLHvdyK0QIhAJUTSzA+aNZk9oUSkWtwn6PcKSBD/5y7ODL8d9TBOcPP-----END CERTIFICATE-----"
+  secret_string = "-----BEGIN CERTIFICATE-----
+MIICBjCCAaygAwIBAgIBATAKBggqhkjOPQQDBDA0MTIwCQYDVQQGEwJJTjAlBgNV
+BAMeHgBrAG8AbgBuAGUAYwB0AC0ATABhAG0AcABQAE8AQzAeFw0yNTA3MzAwNDUz
+MTNaFw0zNTA3MzAwNDUzMTNaMDQxMjAJBgNVBAYTAklOMCUGA1UEAx4eAGsAbwBu
+AG4AZQBjAHQALQBMAGEAbQBwAFAATwBDMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcD
+QgAEkmSUOQbcCnlD+b85MYYEkAdG3B6y/zt7fmhmbo376iULGoQRhemNFhc9PIVb
+8C5aHR7gTH90x0T2g2LmH+q6wqOBrjCBqzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQE
+AwIABjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwFwYJKwYBBAGCNxQC
+BAoMCGNlcnRUeXBlMCMGCSsGAQQBgjcVAgQWBBQBAQEBAQEBAQEBAQEBAQEBAQEB
+ATAcBgkrBgEEAYI3FQcEDzANBgUpAQEBAQIBCgIBFDATBgkrBgEEAYI3FQEEBgIE
+ABQACjAKBggqhkjOPQQDBANIADBFAiBcagvXb7a3wq5+72ybQF/WuTRsGUltcZPx
+eeLHvdyK0QIhAJUTSzA+aNZk9oUSkWtwn6PcKSBD/5y7ODL8d9TBOcPP
+-----END CERTIFICATE-----"
 }
 
 resource "aws_secretsmanager_secret" "kong_cluster_cert_key" {
@@ -316,7 +328,12 @@ resource "aws_secretsmanager_secret" "kong_cluster_cert_key" {
 resource "aws_secretsmanager_secret_version" "kong_cluster_cert_key" {
   count         = var.kong_enabled ? 1 : 0
   secret_id     = aws_secretsmanager_secret.kong_cluster_cert_key[0].id
-  secret_string = "-----BEGIN PRIVATE KEY-----MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg62gtPExj4tm0ZE6nDoQp+btaGXzVdcfotyMpq8fEpTCgCgYIKoZIzj0DAQehRANCAASSZJQ5BtwKeUP5vzkxhgSQB0bcHrL/O3t+aGZujfvqJQsahBGF6Y0WFz08hVvwLlodHuBMf3THRPaDYuYf6rrC-----END PRIVATE KEY-----"
+  secret_string = "-----BEGIN PRIVATE KEY-----
+MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg62gtPExj4tm0ZE6n
+DoQp+btaGXzVdcfotyMpq8fEpTCgCgYIKoZIzj0DAQehRANCAASSZJQ5BtwKeUP5
+vzkxhgSQB0bcHrL/O3t+aGZujfvqJQsahBGF6Y0WFz08hVvwLlodHuBMf3THRPaD
+YuYf6rrC
+-----END PRIVATE KEY-----"
 }
 
 # Kong Gateway ECS Task Definition
