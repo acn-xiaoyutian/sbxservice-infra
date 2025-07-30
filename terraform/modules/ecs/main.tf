@@ -388,19 +388,19 @@ resource "aws_ecs_task_definition" "kong_gateway" {
         },
         {
           name  = "KONG_CLUSTER_CONTROL_PLANE"
-          value = "23b805b4eb.in.cp0.konghq.com:443"
+          value = "d7c265783e.in.cp0.konghq.com:443"
         },
         {
           name  = "KONG_CLUSTER_SERVER_NAME"
-          value = "23b805b4eb.in.cp0.konghq.com"
+          value = "d7c265783e.in.cp0.konghq.com"
         },
         {
           name  = "KONG_CLUSTER_TELEMETRY_ENDPOINT"
-          value = "23b805b4eb.in.tp0.konghq.com:443"
+          value = "d7c265783e.in.tp0.konghq.com:443"
         },
         {
           name  = "KONG_CLUSTER_TELEMETRY_SERVER_NAME"
-          value = "23b805b4eb.in.tp0.konghq.com"
+          value = "d7c265783e.in.tp0.konghq.com"
         },
         {
           name  = "KONG_LUA_SSL_TRUSTED_CERTIFICATE"
