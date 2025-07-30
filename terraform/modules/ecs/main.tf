@@ -300,7 +300,8 @@ resource "aws_secretsmanager_secret" "kong_cluster_cert" {
 resource "aws_secretsmanager_secret_version" "kong_cluster_cert" {
   count         = var.kong_enabled ? 1 : 0
   secret_id     = aws_secretsmanager_secret.kong_cluster_cert[0].id
-  secret_string = "-----BEGIN CERTIFICATE-----
+  secret_string = <<EOT
+-----BEGIN CERTIFICATE-----
 MIICBjCCAaygAwIBAgIBATAKBggqhkjOPQQDBDA0MTIwCQYDVQQGEwJJTjAlBgNV
 BAMeHgBrAG8AbgBuAGUAYwB0AC0ATABhAG0AcABQAE8AQzAeFw0yNTA3MzAwNDUz
 MTNaFw0zNTA3MzAwNDUzMTNaMDQxMjAJBgNVBAYTAklOMCUGA1UEAx4eAGsAbwBu
@@ -312,7 +313,8 @@ BAoMCGNlcnRUeXBlMCMGCSsGAQQBgjcVAgQWBBQBAQEBAQEBAQEBAQEBAQEBAQEB
 ATAcBgkrBgEEAYI3FQcEDzANBgUpAQEBAQIBCgIBFDATBgkrBgEEAYI3FQEEBgIE
 ABQACjAKBggqhkjOPQQDBANIADBFAiBcagvXb7a3wq5+72ybQF/WuTRsGUltcZPx
 eeLHvdyK0QIhAJUTSzA+aNZk9oUSkWtwn6PcKSBD/5y7ODL8d9TBOcPP
------END CERTIFICATE-----"
+-----END CERTIFICATE-----
+EOT
 }
 
 resource "aws_secretsmanager_secret" "kong_cluster_cert_key" {
@@ -328,12 +330,14 @@ resource "aws_secretsmanager_secret" "kong_cluster_cert_key" {
 resource "aws_secretsmanager_secret_version" "kong_cluster_cert_key" {
   count         = var.kong_enabled ? 1 : 0
   secret_id     = aws_secretsmanager_secret.kong_cluster_cert_key[0].id
-  secret_string = "-----BEGIN PRIVATE KEY-----
+  secret_string = <<EOT
+-----BEGIN PRIVATE KEY-----
 MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg62gtPExj4tm0ZE6n
 DoQp+btaGXzVdcfotyMpq8fEpTCgCgYIKoZIzj0DAQehRANCAASSZJQ5BtwKeUP5
 vzkxhgSQB0bcHrL/O3t+aGZujfvqJQsahBGF6Y0WFz08hVvwLlodHuBMf3THRPaD
 YuYf6rrC
------END PRIVATE KEY-----"
+-----END PRIVATE KEY-----
+EOT
 }
 
 # Kong Gateway ECS Task Definition
